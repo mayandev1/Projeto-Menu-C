@@ -8,9 +8,9 @@ typedef struct Item{
     float preco;
 } Item;
 
-void cadastrarItem(Item *item);
-void editarItem(Item *item);
-void removerItem(Item *item);
-void listarItens(Item *item);
+void cadastrarItem(Item *itens, int *tamanho);
+void editarItens(Item *itens, int tamanho);
+void removerItens(Item *itens, int *tamanho);
+void listarItens(Item *itens, int tamanho);
 
 #endif
