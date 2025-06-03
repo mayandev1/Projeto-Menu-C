@@ -1,5 +1,7 @@
-#ifndef ESTOQUE_H
-#define ESTOQUE_H
+#ifndef FUNC_ESTOQUE_H
+#define FUNC_ESTOQUE_H
+
+#include "utils.h"
 
 typedef struct Item{
     int id;
@@ -12,5 +14,6 @@ void cadastrarItem(Item *itens, int *tamanho);
 void editarItens(Item *itens, int tamanho);
 void removerItens(Item *itens, int *tamanho);
 void listarItens(Item *itens, int tamanho);
+void buscarItem(Item *itens, int tamanho);
 
 #endif

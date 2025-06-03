@@ -26,13 +26,13 @@ void cadastrarItem(Item *itens, int *tamanho){
 }
 
 void listarItens(Item *itens, int tamanho){
-    printf("Lista de Itens Cadastrados:\n");
+    printf("======== LISTA DE ITENS CADASTRADOS ========\n");
     for (int i = 0; i < tamanho; i++){
         printf("ID: %d | Nome: %s | Quantidade: %d | Preco: %.2f |\n", itens[i].id, itens[i].nome, itens[i].quantidade, itens[i].preco);
     }
 }
 
-void editarItens(Item *itens, int *tamanho){
+void editarItens(Item *itens, int tamanho){
     int id;
     printf("Digite o ID do item para editar: ");
     scanf("%d", &id);
@@ -56,4 +56,49 @@ void editarItens(Item *itens, int *tamanho){
     }
     
     printf("ITEM COM ID %d NAO FOI ENCONTRADO!\n", id);
+}
+
+void removerItem(Item *itens, int *tamanho){
+    int id, found = 0;
+
+    printf("Digite o id do item que deseja remover: ");
+    scanf("%d", &id);
+    for (int i = 0; i < tamanho; i++){
+        if (id == itens[i].id){
+            found = 1;
+
+            for (int j = i; j < *tamanho - 1; j++){
+                itens[j] = itens[j - 1];
+            }
+            (*tamanho)++;
+
+            printf("PRODUTO REMOVIDO COM SUCESSO...\n");
+            break;
+        }
+    }
+    
+    if (!found){
+        printf("ID %d NAO FOI ENCONTRADO..\n", id);
+    }
+}
+
+void buscarItem(Item *itens, int tamanho){
+    int id, found = 0;
+    
+    printf("Digite o id do item que deseja buscar: ");
+    scanf("%d", &id);
+
+    for (int i = 0; i < tamanho; i++){
+        if (itens[i].id == id){
+            found = 1;
+
+            printf("Item encontrado:\n");
+            printf("ID: %d | Nome: %s | Quantidade: %d | Preco: %.2f |\n", itens[i].id, itens[i].nome, itens[i].quantidade, itens[i].preco);
+            
+        }   
+    }
+    
+    if (!found){
+        printf("ID %d NAO ENCONTRADO...\n", id);
+    }
 }

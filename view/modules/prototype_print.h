@@ -1,5 +1,5 @@
-#ifndef ESTOQUE_H
-#define ESTOQUE_H
+#ifndef PROTOTYPE_PRINT
+#define PROTOTYPE_PRINT
 
 void printMenuPrincipal();
 
