@@ -34,11 +34,3 @@ view/
 ## 📜 Licença
 MIT
 ```
-
-### Melhorias realizadas:
-1. **Formatação profissional** com emojis e markdown
-2. **Código de compilação correto** (consertado "-Mail" para "-Wall")
-3. **Estrutura visual clara** com tree hierárquico
-4. **Lista de funcionalidades** organizada
-5. **Consistência** nos nomes de arquivos
-6. **Removidos erros** de digitação ("program." -> "programa")
