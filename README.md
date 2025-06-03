@@ -1,4 +1,3 @@
-```markdown
 # 🛒 Projeto Menu de Estoque em C
 
 Sistema completo de gerenciamento de estoque com operações CRUD.
