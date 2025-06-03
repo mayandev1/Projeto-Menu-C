@@ -32,7 +32,7 @@ void listarItens(Item *itens, int tamanho){
     }
 }
 
-void editarItens(Item *itens, int tamanho){
+void editarItem(Item *itens, int tamanho){
     int id;
     printf("Digite o ID do item para editar: ");
     scanf("%d", &id);
@@ -48,7 +48,7 @@ void editarItens(Item *itens, int tamanho){
             scanf("%d", &itens[i].quantidade);
 
             printf("Novo Preco: ");
-            scanf("%f", &itens[i].quantidade);
+            scanf("%f", &itens[i].preco);
 
             printf("EDICAO CONCLUIDA COM SUCESSO!\n");
             return;
@@ -63,7 +63,7 @@ void removerItem(Item *itens, int *tamanho){
 
     printf("Digite o id do item que deseja remover: ");
     scanf("%d", &id);
-    for (int i = 0; i < tamanho; i++){
+    for (int i = 0; i < *tamanho; i++){
         if (id == itens[i].id){
             found = 1;
 

@@ -11,8 +11,8 @@ typedef struct Item{
 } Item;
 
 void cadastrarItem(Item *itens, int *tamanho);
-void editarItens(Item *itens, int tamanho);
-void removerItens(Item *itens, int *tamanho);
+void editarItem(Item *itens, int tamanho);
+void removerItem(Item *itens, int *tamanho);
 void listarItens(Item *itens, int tamanho);
 void buscarItem(Item *itens, int tamanho);
 
