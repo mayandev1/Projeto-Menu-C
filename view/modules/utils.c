@@ -3,7 +3,7 @@
 #include "func_estoque.h"
 #include "utils.h"
 
-void limparTela() {
+void limparTela(){
     #ifdef _WIN32
         system("cls");
     #else
@@ -11,14 +11,14 @@ void limparTela() {
     #endif
 }
 
-void limparBuffer() {
+void limparBuffer(){
     int c;
     do {
         c = getchar();
     } while (c != '\n' && c != EOF);
 }
 
-void pequenaPausa() {
+void pequenaPausa(){
     printf("\nPressione ENTER para continuar...");
     
     limparBuffer();

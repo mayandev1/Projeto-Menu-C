@@ -17,28 +17,23 @@ int main(){
 
         switch(opcao){
             case 1: 
-                cadastrarItem(estoque, &tamanho);
-                pequenaPausa(); 
+                cadastrarItem(estoque, &tamanho); 
                 limparTela();
                 break;
             case 2:
                 listarItens(estoque, tamanho);
-                pequenaPausa();
                 limparTela();
                 break;
             case 3:
                 editarItem(estoque, tamanho);
-                pequenaPausa();
                 limparTela();
                 break;
             case 4: 
                 buscarItem(estoque, tamanho);
-                pequenaPausa();
                 limparTela();
                 break;
             case 5:
                 removerItem(estoque, &tamanho);
-                pequenaPausa();
                 limparTela();
                 break;
             case 0:
