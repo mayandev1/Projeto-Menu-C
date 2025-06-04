@@ -3,11 +3,30 @@
 #include "func_estoque.h"
 #include "utils.h"
 
-void limparTela(){
-    system("cls");
+void limparTela() {
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");  // Linux/MacOS
+    #endif
 }
 
-void limparBuffer(){
+void limparBuffer() {
     int c;
-    while ((c = getchar()) != '\n' && c != EOF);
+    do {
+        c = getchar();
+    } while (c != '\n' && c != EOF);
+}
+
+void pequenaPausa() {
+    printf("\nPressione ENTER para continuar...");
+    
+    limparBuffer();
+    
+    int key;
+    do {
+        key = getchar();
+    } while (key != '\n' && key != EOF);
+    
+    limparBuffer();
 }

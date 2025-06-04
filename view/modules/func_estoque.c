@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 #include "func_estoque.h"
 #include "utils.h"
 
@@ -22,7 +23,10 @@ void cadastrarItem(Item *itens, int *tamanho){
     itens[*tamanho] = novo;
     (*tamanho)++;
 
-    printf("Item Adicionado!");
+    limparTela();
+    printf("\nItem adicionado com sucesso!\n");
+    printf("ID: %d | Nome: %s\n", novo.id, novo.nome);
+    pequenaPausa();
 }
 
 void listarItens(Item *itens, int tamanho){
@@ -30,6 +34,7 @@ void listarItens(Item *itens, int tamanho){
     for (int i = 0; i < tamanho; i++){
         printf("ID: %d | Nome: %s | Quantidade: %d | Preco: %.2f |\n", itens[i].id, itens[i].nome, itens[i].quantidade, itens[i].preco);
     }
+    pequenaPausa();
 }
 
 void editarItem(Item *itens, int tamanho){
@@ -56,6 +61,7 @@ void editarItem(Item *itens, int tamanho){
     }
     
     printf("ITEM COM ID %d NAO FOI ENCONTRADO!\n", id);
+    pequenaPausa();
 }
 
 void removerItem(Item *itens, int *tamanho){
@@ -73,12 +79,15 @@ void removerItem(Item *itens, int *tamanho){
             (*tamanho)++;
 
             printf("PRODUTO REMOVIDO COM SUCESSO...\n");
+            pequenaPausa();
             break;
         }
     }
     
     if (!found){
         printf("ID %d NAO FOI ENCONTRADO..\n", id);
+        pequenaPausa();
+
     }
 }
 
@@ -94,11 +103,13 @@ void buscarItem(Item *itens, int tamanho){
 
             printf("Item encontrado:\n");
             printf("ID: %d | Nome: %s | Quantidade: %d | Preco: %.2f |\n", itens[i].id, itens[i].nome, itens[i].quantidade, itens[i].preco);
-            
         }   
+        pequenaPausa();
     }
     
     if (!found){
         printf("ID %d NAO ENCONTRADO...\n", id);
+        pequenaPausa();
+
     }
 }
