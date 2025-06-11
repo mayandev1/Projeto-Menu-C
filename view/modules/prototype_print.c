@@ -12,5 +12,4 @@ void printMenuPrincipal(){
     printf(" 5. Remover produto\n");
     printf(" 0. Sair\n");
     printf("=========================================\n");
-    printf("Escolha uma opcao: ");
 }

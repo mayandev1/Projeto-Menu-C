@@ -11,8 +11,9 @@ int main(){
     int opcao;
 
     do {
+        limparTela();
         printMenuPrincipal();
-        scanf("%d", &opcao);
+        opcao = lerOpcaoMenu();
         limparTela();
 
         switch(opcao){
@@ -41,6 +42,7 @@ int main(){
                 break;
             default: 
                 printf("Opcao invalida.\n");
+                pequenaPausa();
         }
 
     } while(opcao != 0);

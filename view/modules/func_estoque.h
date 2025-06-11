@@ -1,6 +1,5 @@
 #ifndef FUNC_ESTOQUE_H
 #define FUNC_ESTOQUE_H
-
 #include "utils.h"
 
 typedef struct Item{
