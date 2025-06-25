@@ -12,4 +12,5 @@ void pequenaPausa();
 int lerOpcaoMenu(void);
 int validarNome(const char *nome);
 
+
 #endif

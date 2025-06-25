@@ -58,25 +58,29 @@ void cadastrarItem(Item *itens, int *tamanho){
     } while (!validarNome(novo.nome));
 
     do {
+        input_valido = 1;
         printf("Quantidade: ");
         if (scanf("%d", &novo.quantidade) != 1){
             printf("QUANTIDADE INVALIDA! DIGITE UM NUMERO INTEIRO.\n");
             limparBuffer();
             input_valido = 0;
-        } else {
-            input_valido = 1;
+        } else if (novo.quantidade < 0) {
+            printf("QUANTIDADE NAO PODE SER NEGATIVA!\n");
+            input_valido = 0;
         }
     } while (!input_valido);
     limparBuffer();
 
     do {
+        input_valido = 1;
         printf("Preco: ");
         if (scanf("%f", &novo.preco) != 1){
             printf("PRECO INVALIDO! DIGITE UM NUMERO.\n");
             limparBuffer();
             input_valido = 0;
-        } else {
-            input_valido = 1;
+        } else if (novo.preco <= 0) {
+            printf("PRECO DEVE SER MAIOR QUE ZERO!\n");
+            input_valido = 0;
         }
     } while (!input_valido);
 
@@ -123,6 +127,12 @@ void editarItem(Item *itens, int tamanho){
             continue;
         }
         limparBuffer();
+
+        if (id < 0) {
+            printf("ID NAO PODE SER NEGATIVO!\n");
+            input_valido = 0;
+            continue;
+        }
 
         limparTela();
         for (int i = 0; i <= 3; i++){
@@ -215,6 +225,12 @@ void removerItem(Item *itens, int *tamanho){
         }
         limparBuffer();
 
+        if (id < 0) {
+            printf("ID NAO PODE SER NEGATIVO!\n");
+            input_valido = 0;
+            continue;
+        }
+
         limparTela();
         for (int i = 0; i <= 3; i++){
             printf("BUSCANDO");
@@ -272,6 +288,12 @@ void buscarItem(Item *itens, int tamanho){
         }
         limparBuffer();
 
+        if (id < 0) {
+            printf("ID NAO PODE SER NEGATIVO!\n");
+            input_valido = 0;
+            continue;
+        }
+
         limparTela();
         for (int i = 0; i <= 3; i++){
             printf("BUSCANDO");
@@ -300,4 +322,54 @@ void buscarItem(Item *itens, int tamanho){
         }
 
     } while (!input_valido);
+}
+
+int carregarEstoqueDeArquivo(Item *itens, const char *nomeArquivo){
+    FILE *arquivo = fopen(nomeArquivo, "r");
+    if(arquivo == NULL){
+        printf("Arquivo '%s' nao encontrado. Um novo arquivo sera criado ao salvar.\n", nomeArquivo);
+        return 0;
+    }
+
+    int count = 0;
+    while(fscanf(arquivo, "%d,%49[^,],%d,%f\n", 
+        &itens[count].id,
+        itens[count].nome,
+        &itens[count].quantidade,
+        &itens[count].preco) == 4){
+
+        if (itens[count].id < 0 || itens[count].quantidade < 0 || itens[count].preco <= 0) {
+            printf("Aviso: Item inválido encontrado no arquivo (ID: %d). Ignorando...\n", itens[count].id);
+            continue;
+        }
+
+        count++;
+        if(count >= MAX_ITENS){
+            printf("Aviso: Limite maximo de itens (%d) atingido.\n", MAX_ITENS);
+            break;
+        }
+    }
+
+    fclose(arquivo);
+    printf("Estoque carregado com sucesso (%d itens).\n", count);
+    return count;
+}
+
+void salvarEstoqueEmArquivo(Item *itens, int tamanho, const char *nomeArquivo){
+    FILE *arquivo = fopen(nomeArquivo, "w");
+    if(arquivo == NULL){
+        printf("Erro ao abrir o arquivo '%s' para escrita.\n", nomeArquivo);
+        return;
+    }
+
+    for(int i = 0; i < tamanho; i++){
+        fprintf(arquivo, "%d,%s,%d,%.2f\n", 
+            itens[i].id,
+            itens[i].nome,
+            itens[i].quantidade,
+            itens[i].preco);
+    }
+
+    fclose(arquivo);
+    printf("Estoque salvo com sucesso em '%s'.\n", nomeArquivo);
 }

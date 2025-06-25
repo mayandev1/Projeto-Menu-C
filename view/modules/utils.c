@@ -24,8 +24,6 @@ void pequenaPausa(){
     do {
         key = getchar();
     } while (key != '\n' && key != EOF);
-
-    limparBuffer();
 }
 
 int lerOpcaoMenu(){
@@ -40,15 +38,15 @@ int lerOpcaoMenu(){
         }
         
         if (sscanf(input, "%d", &opcao) != 1){
-            printf("Entrada invalida! Digite apenas numeros de 0 a 5.\n");
+            printf("Entrada invalida! Digite apenas numeros de 0 a 7.\n");
             pequenaPausa();
             limparTela();
             printMenuPrincipal();
             continue;
         }
         
-        if (opcao < 0 || opcao > 5){
-            printf("Opcao invalida! Digite um numero entre 0 e 5.\n");
+        if (opcao < 0 || opcao > 7){
+            printf("Opcao invalida! Digite um numero entre 0 e 7.\n");
             pequenaPausa();
             limparTela();
             printMenuPrincipal();

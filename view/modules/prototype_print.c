@@ -10,6 +10,8 @@ void printMenuPrincipal(){
     printf(" 3. Editar produto\n");
     printf(" 4. Buscar produto\n");
     printf(" 5. Remover produto\n");
+    printf(" 6. Carregar estoque de arquivo\n");
+    printf(" 7. Salvar estoque em arquivo\n");
     printf(" 0. Sair\n");
     printf("=========================================\n");
 }

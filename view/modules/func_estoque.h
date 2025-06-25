@@ -14,5 +14,7 @@ void editarItem(Item *itens, int tamanho);
 void removerItem(Item *itens, int *tamanho);
 void listarItens(Item *itens, int tamanho);
 void buscarItem(Item *itens, int tamanho);
+int carregarEstoqueDeArquivo(Item *itens, const char *nomeArquivo);
+void salvarEstoqueEmArquivo(Item *itens, int tamanho, const char *nomeArquivo);
 
 #endif
