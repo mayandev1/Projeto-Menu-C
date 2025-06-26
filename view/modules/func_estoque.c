@@ -90,6 +90,7 @@ void cadastrarItem(Item *itens, int *tamanho){
     limparTela();
     printf("Item adicionado com sucesso!\n");
     printf("ID: %d | Nome: %s\n", novo.id, novo.nome);
+    getchar();
     pequenaPausa();
 }
 
@@ -190,6 +191,7 @@ void editarItem(Item *itens, int tamanho){
                 } while (!input_valido);
                 
                 printf("EDICAO CONCLUIDA COM SUCESSO!\n");
+                getchar();
                 pequenaPausa();
                 return;
             }
